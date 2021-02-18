@@ -1,25 +1,42 @@
+import React, { useState }from "react";
 import logo from './logo.svg';
 import './App.css';
+import NavBar from "./components/NavBar"
+import Weather from "./components/Weather"
+import WeatherSearch from "./components/WeatherSearch"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [lat, setLat] = useState(0)
+  const [long, setLong] = useState(0)
+
+ 
+
+  let Geo = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(getPosition);
+    }
+
+    function getPosition(position) {
+      setLat(position.coords.latitude.toFixed(2));
+      setLong(position.coords.longitude.toFixed(2));
+      
+    }}
+
+  
+  
+  return ( 
+  <div className = "App" >
+{Geo()}
+<NavBar lat = {lat} long = {long}/>
+
+
+
+
+<WeatherSearch />
     </div>
   );
 }
+
+
 
 export default App;
