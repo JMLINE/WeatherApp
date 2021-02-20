@@ -4,6 +4,10 @@
     margin: 0;
     padding: 20pt;
 }
+.gitHub{
+    list-style: none;
+    text-align: end;
+}
 .newTitle{
     color: white;
     font-family: 'Luckiest Guy', cursive;
@@ -15,4 +19,8 @@
 .current{
     color: black;
     font-size: 20pt;  
+}
+.fab {
+color: black
+
 }

@@ -73,11 +73,11 @@ function WeatherSearch() {
         </h3>}
       <br></br>
       {weatherSearch === "NaNa" ? "" : 
-      toggle === true ? <Button color = "success" style= {{width: "20%"}} onClick ={handleToggle}>Prefer Centigrade?</Button>:
-      <Button color = "primary"style= {{width: "20%"}} onClick ={handleToggle}>Prefer Fahrenheit?</Button>}
+      toggle === true ? <Button outline color = "success" style= {{width: "20%"}} onClick ={handleToggle}>Prefer Celcius?</Button>:
+      <Button outline color = "primary"style= {{width: "20%"}} onClick ={handleToggle}>Prefer Fahrenheit?</Button>}
       <br></br>
       {weatherSearch === "NaNa" ? "" :
-      <Button color = "danger"type="submit"style= {{width: "20%"}} onClick={clearData}>Clear</Button>}
+      <Button outline color = "danger"type="submit"style= {{width: "20%"}} onClick={clearData}>Clear</Button>}
       
 
     </div>
