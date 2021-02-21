@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useImperativeHandle, useState } from "react";
 import { Button } from 'reactstrap';
 
 let WEATHER_KEY = "dedeb7c6599b636ce8aa4a3e222a687f";
@@ -8,13 +8,16 @@ function Weather(props) {
   const [toggle, setToggle] = useState(true);
   const  [city, setCity ] = useState('')
 
-  function fetchResults2() {
+  
+  function fetchResults2(){
     fetch(
       `http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${WEATHER_KEY}`
     )
       .then((response) => response.json())
-      .then((data) => 
-      setWeatherData(data.main.temp))
+      .then((data) => {
+      setWeatherData(data.main.temp);
+      console.log(data.main.temp)
+      })
     }
 
   function reverseGeo(){
@@ -25,15 +28,15 @@ function Weather(props) {
     .then((data) => setCity(data[0].name))
   }
 
-  reverseGeo()
-  useEffect(() => {
-    fetchResults2();
-  }, []);
 
+  // useEffect(() => {
+  // }, []);
+  
+ fetchResults2()
+  reverseGeo()
   return (
     <div>
      <div className = "cityName"></div>
- 
       <p>It is currently {Math.floor(weatherData * 1.8 - 459.67) +"°F" } degrees in {city} 
       </p>
       

@@ -16,7 +16,8 @@ function WeatherSearch() {
   const [weatherSearch, setWeatherSearch] = useState("NaNa");
   const [toggle, setToggle] = useState(true);
   const [cityName, setCityName ] = useState('');
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('');
+  const [weatherFor, setWeatherFor] = useState('')
 
  const fetchResultsSearch = (e) => {
       e.preventDefault();
@@ -25,7 +26,11 @@ function WeatherSearch() {
 
     )
       .then((response) => response.json())
-      .then((data) => setWeatherSearch(data.main.temp))  
+      .then((data) => {
+      setWeatherSearch(data.main.temp);
+      setWeatherFor(data.weather[0].description);
+    
+      })
      
   }
   function handleToggle(){
@@ -69,7 +74,7 @@ function WeatherSearch() {
  
     
       {weatherSearch === "NaNa" ? "" : 
-      <h3>It is currently {toggle === true ? Math.floor(weatherSearch * 1.8 - 459.67) +"°F" : Math.floor(weatherSearch - 273.12)+"°C" } degrees in {cityName} 
+      <h3>It is currently {toggle === true ? Math.floor(weatherSearch * 1.8 - 459.67) +"°F" : Math.floor(weatherSearch - 273.12)+"°C" } degrees in {cityName} with {weatherFor}.
         </h3>}
       <br></br>
       {weatherSearch === "NaNa" ? "" : 
