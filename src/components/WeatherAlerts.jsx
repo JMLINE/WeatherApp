@@ -10,7 +10,7 @@ function WeatherAlerts(props){
 
     function fetchAlert() {
         fetch(
-       `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.long}&exclude=daily,current,minutely,hourly&appid=${WEATHER_KEY}`
+       `api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.long}&exclude=daily,current,minutely,hourly&appid=${WEATHER_KEY}`
         )
           .then((response) => response.json())
           .then((data) => 
