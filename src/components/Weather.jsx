@@ -11,7 +11,7 @@ function Weather(props) {
   
   function fetchResults2(){
     fetch(
-      `api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${WEATHER_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${WEATHER_KEY}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -22,7 +22,7 @@ function Weather(props) {
 
   function reverseGeo(){
     fetch(
-      `api.openweathermap.org/geo/1.0/reverse?lat=${props.lat}&lon=${props.long}&limit=5&appid=${WEATHER_KEY}`
+      `https://api.openweathermap.org/geo/1.0/reverse?lat=${props.lat}&lon=${props.long}&limit=5&appid=${WEATHER_KEY}`
     )
     .then((response) =>response.json())
     .then((data) => setCity(data[0].name))
