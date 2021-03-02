@@ -8,6 +8,7 @@ import {
   Col,
   Row,
   Container,
+  Alert,
 } from "reactstrap";
 
 let WEATHER_KEY = "dedeb7c6599b636ce8aa4a3e222a687f";
@@ -16,8 +17,11 @@ function WeatherSearch() {
   const [weatherSearch, setWeatherSearch] = useState("NaNa");
   const [toggle, setToggle] = useState(true);
   const [cityName, setCityName ] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [weatherFor, setWeatherFor] = useState('')
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [weatherFor, setWeatherFor] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
+  
+  
 
  const fetchResultsSearch = (e) => {
       e.preventDefault();
@@ -29,8 +33,12 @@ function WeatherSearch() {
       .then((data) => {
       setWeatherSearch(data.main.temp);
       setWeatherFor(data.weather[0].description);
-    
+      setIsDisabled(true);
+      setErrorMessage(false)
       })
+      .catch(function(error) {
+        console.log(error)
+        setErrorMessage(true)})
      
   }
   function handleToggle(){
@@ -43,7 +51,9 @@ function WeatherSearch() {
    function clearData(){
        setWeatherSearch("NaNa")
        setCityName("")
+       setIsDisabled(false)
    }
+
   return (
     <div>
         <Form onSubmit ={fetchResultsSearch}>
@@ -56,7 +66,7 @@ function WeatherSearch() {
             name = "city"
             placeholder = "Search a City"
             required
-
+            disabled = {isDisabled}
             onChange = {(e) => {
                 setCityName(e.target.value)
             }}
@@ -70,6 +80,9 @@ function WeatherSearch() {
                 </Row>
             </Container>
         </Form>
+        {errorMessage === true ? <Alert color="danger">
+      An Error Occured.  Please Check Your Spelling and Try Again.
+    </Alert> : ""}
      <div className = "cityName"></div>
  
     
