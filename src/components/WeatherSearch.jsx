@@ -22,7 +22,7 @@ function WeatherSearch() {
  const fetchResultsSearch = (e) => {
       e.preventDefault();
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${WEATHER_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${WEATHER_KEY}`
 
     )
       .then((response) => response.json())
