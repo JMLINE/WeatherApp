@@ -2,7 +2,7 @@
     background-image: url("../assets/clouds.jpg");
     background-size: cover;
     margin: 0;
-    padding: 20pt;
+    padding: 15pt;
 }
 .gitHub{
     list-style: none;
@@ -13,7 +13,7 @@
     font-family: 'Luckiest Guy', cursive;
     font-size: 40pt;
     margin: 0;
-    padding: 20pt;
+    padding: 10pt;
 }
 
 .current{
